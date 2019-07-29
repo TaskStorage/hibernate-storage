@@ -1,4 +1,4 @@
-package com.taskstorage;
+package com.taskstorage.model;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.taskstorage;
+package com.taskstorage.model;
 
 
 import javax.persistence.*;
@@ -10,8 +10,13 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
+
     private String username;
+
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Task> tasks;
@@ -19,9 +24,10 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String password, Role role) {
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
     public Long getId() {
@@ -54,5 +60,13 @@ public class User {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
