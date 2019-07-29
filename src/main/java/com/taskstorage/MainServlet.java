@@ -1,5 +1,9 @@
 package com.taskstorage;
 
+import com.taskstorage.model.Role;
+import com.taskstorage.model.User;
+import com.taskstorage.repository.UserRepository;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -11,13 +15,21 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/")
 public class MainServlet extends HttpServlet {
 
-    @Override
+    private UserRepository userRepository = new UserRepository();
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/main.jsp").forward(request, response);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            User user = new User(username, password, Role.USER);
+            userRepository.createUser(user);
+            response.sendRedirect(request.getContextPath() + "/");
+        } catch (Exception ex) {
+            getServletContext().getRequestDispatcher("/").forward(request, response);
+        }
     }
 }

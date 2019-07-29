@@ -5,7 +5,7 @@
     <title>Task Storage</title>
 </head>
 <body>
-    <form method="post" action="/register">
+    <form method="post">
         <label>Login</label><br>
         <input name="username"/><br><br>
         <label>Password</label><br>
