@@ -11,15 +11,15 @@
         <property name="connection.username">TaskStorage</property>
         <property name="connection.password">8AC4uGkbgzcnGjcr</property>
 
-        <property name="connection.pool_size">2</property>
+        <property name="connection.pool_size">200</property>
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="current_session_context_class">thread</property>
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="com.taskstorage.Task"/>
-        <mapping class="com.taskstorage.User"/>
+        <mapping class="com.taskstorage.model.Task"/>
+        <mapping class="com.taskstorage.model.User"/>
 
     </session-factory>
 </hibernate-configuration>

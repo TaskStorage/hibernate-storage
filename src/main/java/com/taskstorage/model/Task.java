@@ -1,4 +1,4 @@
-package com.taskstorage;
+package com.taskstorage.model;
 
 import javax.persistence.*;
 
@@ -20,6 +20,12 @@ public class Task {
     }
 
     public Task(String description, String content, User author) {
+        this.description = description;
+        this.content = content;
+        this.author = author;
+    }
+    public Task(Long id, String description, String content, User author) {
+        this.id = id;
         this.description = description;
         this.content = content;
         this.author = author;
