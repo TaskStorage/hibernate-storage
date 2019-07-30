@@ -24,6 +24,12 @@ public class Task {
         this.content = content;
         this.author = author;
     }
+    public Task(Long id, String description, String content, User author) {
+        this.id = id;
+        this.description = description;
+        this.content = content;
+        this.author = author;
+    }
 
     public Long getId() {
         return id;

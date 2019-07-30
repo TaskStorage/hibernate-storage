@@ -12,6 +12,7 @@ public class UserRepository implements UserDAO {
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     Session session;
 
+    @Override
     public void createUser(User user) {
         session = sessionFactory.openSession();
         session.beginTransaction();
@@ -69,7 +70,11 @@ public class UserRepository implements UserDAO {
     public void deleteUser(Long id) {
         session = sessionFactory.openSession();
         session.beginTransaction();
-        session.delete(id);
+
+        User user = new User();
+        user.setId(id);
+        session.delete(user);
+
         session.getTransaction().commit();
     }
 

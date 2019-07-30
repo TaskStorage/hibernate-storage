@@ -30,6 +30,13 @@ public class User {
         this.role = role;
     }
 
+    public User(Long id, String username, String password, Role role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
     public Long getId() {
         return id;
     }
@@ -68,5 +75,10 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return username;
     }
 }
