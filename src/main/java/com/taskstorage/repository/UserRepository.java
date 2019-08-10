@@ -18,6 +18,7 @@ public class UserRepository implements UserDAO {
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
+        session.close();
     }
 
     @Override
@@ -26,6 +27,7 @@ public class UserRepository implements UserDAO {
         session = sessionFactory.openSession();
         session.beginTransaction();
         users = session.createQuery("from User").list();
+        session.close();
         return users;
     }
 
@@ -43,6 +45,7 @@ public class UserRepository implements UserDAO {
         // user = session.get(User.class, id);
 
         user = (User) query.uniqueResult();
+        session.close();
         return user;
     }
 
@@ -55,6 +58,7 @@ public class UserRepository implements UserDAO {
         Query query = session.createQuery(queryString);
         query.setParameter("username", username);
         user = (User) query.uniqueResult();
+        session.close();
         return user;
     }
 
@@ -64,6 +68,7 @@ public class UserRepository implements UserDAO {
         session.beginTransaction();
         session.update(user);
         session.getTransaction().commit();
+        session.close();
     }
 
     @Override
@@ -76,6 +81,7 @@ public class UserRepository implements UserDAO {
         session.delete(user);
 
         session.getTransaction().commit();
+        session.close();
     }
 
 }

@@ -18,6 +18,7 @@ public class TaskRepository implements TaskDao {
         session = sessionFactory.openSession();
         session.beginTransaction();
         tasks = session.createQuery("from Task").list();
+        session.close();
         return tasks;
     }
 
@@ -35,6 +36,8 @@ public class TaskRepository implements TaskDao {
         // user = session.get(Task.class, id);
 
         task = (Task) query.uniqueResult();
+
+        session.close();
         return task;
     }
 
@@ -44,6 +47,7 @@ public class TaskRepository implements TaskDao {
         session.beginTransaction();
         session.save(task);
         session.getTransaction().commit();
+        session.close();
     }
 
     @Override
@@ -52,6 +56,7 @@ public class TaskRepository implements TaskDao {
         session.beginTransaction();
         session.update(task);
         session.getTransaction().commit();
+        session.close();
     }
 
     @Override
@@ -64,5 +69,6 @@ public class TaskRepository implements TaskDao {
         session.delete(task);
 
         session.getTransaction().commit();
+        session.close();
     }
 }
