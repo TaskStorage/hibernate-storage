@@ -1,4 +1,4 @@
-### Servlet Storage
+### Hibernate Storage
 Реализация простого сервиса хранения заметок.
 Полный аналог [ServletStorage](https://github.com/TaskStorage/servletstorage) за исключением применения Hibernate вместо JDBC
 
