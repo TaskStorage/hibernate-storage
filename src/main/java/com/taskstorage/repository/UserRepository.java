@@ -23,7 +23,7 @@ public class UserRepository implements UserDAO {
 
     @Override
     public List<User> selectAll() {
-        List<User> users = null;
+        List<User> users;
         session = sessionFactory.openSession();
         session.beginTransaction();
         users = session.createQuery("from User").list();
@@ -33,7 +33,7 @@ public class UserRepository implements UserDAO {
 
     @Override
     public User selectById(Long id) {
-        User user = null;
+        User user;
         session = sessionFactory.openSession();
         session.beginTransaction();
         // Select with query
@@ -51,7 +51,7 @@ public class UserRepository implements UserDAO {
 
     @Override
     public User selectByUsername(String username) {
-        User user = null;
+        User user;
         session = sessionFactory.openSession();
         session.beginTransaction();
         String queryString = "from User where username = :username";

@@ -7,11 +7,9 @@
 <body>
 <%@include file="parts/navbar.jsp" %>
 <div class="container mb-5 mt-3">
-
     <div class="text-center">
         <img src='<c:url value="/static/404.png"/>'>
     </div>
-
 </div>
 <%@include file="parts/footer.jsp" %>
 </body>

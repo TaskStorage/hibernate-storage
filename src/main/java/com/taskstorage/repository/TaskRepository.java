@@ -14,7 +14,7 @@ public class TaskRepository implements TaskDao {
 
     @Override
     public List<Task> selectAll() {
-        List<Task> tasks = null;
+        List<Task> tasks;
         session = sessionFactory.openSession();
         session.beginTransaction();
         tasks = session.createQuery("from Task").list();
@@ -24,7 +24,7 @@ public class TaskRepository implements TaskDao {
 
     @Override
     public Task selectById(Long id) {
-        Task task = null;
+        Task task;
         session = sessionFactory.openSession();
         session.beginTransaction();
         // Select with query

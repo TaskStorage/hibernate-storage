@@ -23,7 +23,7 @@ public class AuthFilter implements Filter {
     }
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
     }
 
     @Override
@@ -52,7 +52,7 @@ public class AuthFilter implements Filter {
             final Role role = Role.valueOf(session.getAttribute("role").toString());
 
             moveToMenu(req, res, role, filterChain);
-            //2. Retrive data from login.jsp (req.getParameter("username")...) and store to session -> redirect to destination
+        //2. Retrieve data from login.jsp (req.getParameter("username")...) and store to session -> redirect to destination
         } else if ((user = userRepository.selectByUsername(username)) != null && user.getPassword().equals(password)) {
 
             final Role role = user.getRole();
@@ -63,18 +63,18 @@ public class AuthFilter implements Filter {
             req.getSession().setAttribute("role", user.getRole().name());
 
             moveToMenu(req, res, role, filterChain);
-            //1. Not logged - go to login.jsp
+        //1. Not logged - go to login.jsp
         } else {
             moveToMenu(req, res, Role.UNKNOWN, filterChain);
         }
     }
 
-    /**
-     * If access 'admin' move anywhere.
-     * If access 'user' move to tasks.
-     * If user try to access wrong page - display "notfound"
-     * If not logged - move to login.jsp
-     */
+    /*
+     If access 'admin' move anywhere.
+     If access 'user' move to tasks.
+     If user try to access wrong page - display "notfound"
+     If not logged - move to login.jsp
+    */
     private void moveToMenu(final HttpServletRequest req,
                             final HttpServletResponse res,
                             final Role role, FilterChain filterChain)

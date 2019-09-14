@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary mt-2">Save</button>
+                <button type="submit" class="btn btn-primary mt-2">Register</button>
             </div>
         </form>
     </div>

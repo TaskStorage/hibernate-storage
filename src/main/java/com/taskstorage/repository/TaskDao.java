@@ -4,7 +4,7 @@ import com.taskstorage.model.Task;
 
 import java.util.List;
 
-public interface TaskDao {
+interface TaskDao {
     List<Task> selectAll();
     Task selectById(Long id);
     void createTask(Task task);

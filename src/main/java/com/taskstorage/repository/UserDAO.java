@@ -4,7 +4,7 @@ import com.taskstorage.model.User;
 
 import java.util.List;
 
-public interface UserDAO {
+interface UserDAO {
     List<User> selectAll();
     User selectById(Long id);
     User selectByUsername(String username);
